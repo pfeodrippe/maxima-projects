@@ -1,0 +1,640 @@
+<!DOCTYPE HTML">
+<HTML>
+ <HEAD>
+  <TITLE>chaos</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax"
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="chaos_htmlimg/chaos.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 16.04.0         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i1) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">plotdf</span>(<span class="code_variable">r</span> <span class="code_operator">+</span> <span class="code_number">1</span><span class="code_operator">*</span><span class="code_function">sin</span>(<span class="code_variable">y</span>), [<span class="code_variable">x</span>, <span class="code_number">-</span><span class="code_number">50</span>, <span class="code_number">50</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">parameters</span>, <span class="code_string">&quot;</span><span class="code_string">r</span><span class="code_string">=</span><span class="code_string">0</span><span class="code_string">.</span><span class="code_string">9</span><span class="code_string">&quot;</span>],<BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">sliders</span>, <span class="code_string">&quot;</span><span class="code_string">r</span><span class="code_string">=</span><span class="code_string">0</span><span class="code_string">:</span><span class="code_string">10</span><span class="code_string">&quot;</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">plot2d</span>(<span class="code_number">0</span>.<span class="code_number">9</span> <span class="code_operator">+</span> <span class="code_number">1</span><span class="code_operator">*</span><span class="code_function">sin</span>(<span class="code_variable">y</span>), [<span class="code_variable">y</span>, <span class="code_number">-</span><span class="code_number">10</span>, <span class="code_number">10</span>])<span class="code_endofline">$</span><span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i2) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">harmonic</span><span class="code_comment"> </span><span class="code_comment">oscillator</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">v</span>,<span class="code_operator">-</span><span class="code_variable">k</span><span class="code_operator">*</span><span class="code_variable">x</span><span class="code_operator">/</span><span class="code_variable">m</span>], [<span class="code_variable">x</span>,<span class="code_variable">v</span>], [<span class="code_variable">parameters</span>,<span class="code_string">&quot;</span><span class="code_string">m</span><span class="code_string">=</span><span class="code_string">2</span><span class="code_string">,</span><span class="code_string">k</span><span class="code_string">=</span><span class="code_string">2</span><span class="code_string">&quot;</span>],<BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">sliders</span>,<span class="code_string">&quot;</span><span class="code_string">m</span><span class="code_string">=</span><span class="code_string">1</span><span class="code_string">:</span><span class="code_string">5</span><span class="code_string">&quot;</span>], [<span class="code_variable">trajectory_at</span>,<span class="code_number">6</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i3) 
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">damped</span><span class="code_comment"> </span><span class="code_comment">harmonic</span><span class="code_comment"> </span><span class="code_comment">oscillator</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">v</span>,<span class="code_operator">-</span><span class="code_variable">k</span><span class="code_operator">*</span><span class="code_variable">x</span><span class="code_operator">/</span><span class="code_variable">m</span> <span class="code_operator">-</span> <span class="code_number">0</span>.<span class="code_number">1</span><span class="code_operator">*</span><span class="code_variable">v</span>], [<span class="code_variable">x</span>, <span class="code_variable">v</span>], [<span class="code_variable">parameters</span>,<span class="code_string">&quot;</span><span class="code_string">m</span><span class="code_string">=</span><span class="code_string">2</span><span class="code_string">,</span><span class="code_string">k</span><span class="code_string">=</span><span class="code_string">2</span><span class="code_string">&quot;</span>],<BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">sliders</span>,<span class="code_string">&quot;</span><span class="code_string">m</span><span class="code_string">=</span><span class="code_string">1</span><span class="code_string">:</span><span class="code_string">5</span><span class="code_string">&quot;</span>], [<span class="code_variable">trajectory_at</span>,<span class="code_number">6</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Example</span><span class="code_comment"> </span><span class="code_comment">5</span><span class="code_comment">.</span><span class="code_comment">1</span><span class="code_comment">.</span><span class="code_comment">2</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">kill</span>(<span class="code_variable">a</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">eq1</span><span class="code_operator">:</span> <span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">x</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">eq2</span><span class="code_operator">:</span> <span class="code_operator">-</span><span class="code_variable">y</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">eq1</span>, <span class="code_variable">eq2</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_variable">x</span>, <span class="code_number">-</span><span class="code_number">50</span>, <span class="code_number">50</span>], [<span class="code_variable">y</span>, <span class="code_number">-</span><span class="code_number">50</span>, <span class="code_number">50</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">parameters</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">1</span><span class="code_string">&quot;</span>], [<span class="code_variable">sliders</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">5</span><span class="code_string">:</span><span class="code_string">5</span><span class="code_string">&quot;</span>], [<span class="code_variable">trajectory_at</span>,<span class="code_number">0</span>.<span class="code_number">5</span>,<span class="code_number">0</span>.<span class="code_number">5</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Example</span><span class="code_comment"> </span><span class="code_comment">5</span><span class="code_comment">.</span><span class="code_comment">2</span><span class="code_comment">.</span><span class="code_comment">2</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_variable">eq1</span><span class="code_operator">:</span> <span class="code_variable">x</span> <span class="code_operator">+</span> <span class="code_variable">y</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">eq2</span><span class="code_operator">:</span> <span class="code_number">4</span><span class="code_operator">*</span><span class="code_variable">x</span> <span class="code_operator">-</span> <span class="code_number">2</span><span class="code_operator">*</span><span class="code_variable">y</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">eq1</span>, <span class="code_variable">eq2</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_variable">x</span>, <span class="code_number">-</span><span class="code_number">50</span>, <span class="code_number">50</span>], [<span class="code_variable">y</span>, <span class="code_number">-</span><span class="code_number">50</span>, <span class="code_number">50</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">trajectory_at</span>,<span class="code_number">0</span>.<span class="code_number">5</span>,<span class="code_number">0</span>.<span class="code_number">5</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Exercise</span><span class="code_comment"> </span><span class="code_comment">5</span><span class="code_comment">.</span><span class="code_comment">3</span><span class="code_comment">.</span><span class="code_comment">2</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_variable">R_</span><span class="code_operator">:</span> <span class="code_variable">J</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">J_</span><span class="code_operator">:</span> <span class="code_operator">-</span><span class="code_variable">R</span> <span class="code_operator">+</span> <span class="code_variable">J</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">R_</span>, <span class="code_variable">J_</span>], [<span class="code_variable">R</span>, <span class="code_variable">J</span>], [<span class="code_variable">R</span>, <span class="code_number">-</span><span class="code_number">5000</span>, <span class="code_number">5000</span>], [<span class="code_variable">J</span>, <span class="code_number">-</span><span class="code_number">5000</span>, <span class="code_number">5000</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">trajectory_at</span>,<span class="code_number">0</span>.<span class="code_number">5</span>,<span class="code_number">0</span>.<span class="code_number">5</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Exercise</span><span class="code_comment"> </span><span class="code_comment">5</span><span class="code_comment">.</span><span class="code_comment">3</span><span class="code_comment">.</span><span class="code_comment">3</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">kill</span>(<span class="code_variable">a</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span> <span class="code_function">kill</span>(<span class="code_variable">b</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">R_</span><span class="code_operator">:</span> <span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">J</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">J_</span><span class="code_operator">:</span> <span class="code_variable">b</span><span class="code_operator">*</span><span class="code_variable">R</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">R_</span>, <span class="code_variable">J_</span>], [<span class="code_variable">R</span>, <span class="code_variable">J</span>], [<span class="code_variable">R</span>, <span class="code_number">-</span><span class="code_number">5000</span>, <span class="code_number">5000</span>], [<span class="code_variable">J</span>, <span class="code_number">-</span><span class="code_number">5000</span>, <span class="code_number">5000</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">parameters</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">1</span><span class="code_string">, </span><span class="code_string">b</span><span class="code_string">=</span><span class="code_string">1</span><span class="code_string">&quot;</span>], [<span class="code_variable">sliders</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">5</span><span class="code_string">:</span><span class="code_string">5</span><span class="code_string">, </span><span class="code_string">b</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">5</span><span class="code_string">:</span><span class="code_string">5</span><span class="code_string">&quot;</span>], [<span class="code_variable">trajectory_at</span>,<span class="code_number">0</span>.<span class="code_number">5</span>,<span class="code_number">0</span>.<span class="code_number">5</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Exercise</span><span class="code_comment"> </span><span class="code_comment">5</span><span class="code_comment">.</span><span class="code_comment">3</span><span class="code_comment">.</span><span class="code_comment">4</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">kill</span>(<span class="code_variable">a</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span> <span class="code_function">kill</span>(<span class="code_variable">b</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">R_</span><span class="code_operator">:</span> <span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">R</span> <span class="code_operator">+</span> <span class="code_variable">b</span><span class="code_operator">*</span><span class="code_variable">J</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">J_</span><span class="code_operator">:</span> <span class="code_operator">-</span><span class="code_variable">b</span><span class="code_operator">*</span><span class="code_variable">R</span> <span class="code_operator">-</span> <span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">J</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">R_</span>, <span class="code_variable">J_</span>], [<span class="code_variable">R</span>, <span class="code_variable">J</span>], [<span class="code_variable">R</span>, <span class="code_number">-</span><span class="code_number">5000</span>, <span class="code_number">5000</span>], [<span class="code_variable">J</span>, <span class="code_number">-</span><span class="code_number">5000</span>, <span class="code_number">5000</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">parameters</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">1</span><span class="code_string">, </span><span class="code_string">b</span><span class="code_string">=</span><span class="code_string">1</span><span class="code_string">&quot;</span>], [<span class="code_variable">sliders</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">5</span><span class="code_string">:</span><span class="code_string">5</span><span class="code_string">, </span><span class="code_string">b</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">5</span><span class="code_string">:</span><span class="code_string">5</span><span class="code_string">&quot;</span>], [<span class="code_variable">trajectory_at</span>,<span class="code_number">0</span>.<span class="code_number">5</span>,<span class="code_number">0</span>.<span class="code_number">5</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Exercise</span><span class="code_comment"> </span><span class="code_comment">5</span><span class="code_comment">.</span><span class="code_comment">3</span><span class="code_comment">.</span><span class="code_comment">5</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">kill</span>(<span class="code_variable">a</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span> <span class="code_function">kill</span>(<span class="code_variable">b</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">R_</span><span class="code_operator">:</span> <span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">R</span> <span class="code_operator">+</span> <span class="code_variable">b</span><span class="code_operator">*</span><span class="code_variable">J</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">J_</span><span class="code_operator">:</span> <span class="code_variable">b</span><span class="code_operator">*</span><span class="code_variable">R</span> <span class="code_operator">+</span> <span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">J</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">R_</span>, <span class="code_variable">J_</span>], [<span class="code_variable">R</span>, <span class="code_variable">J</span>], [<span class="code_variable">R</span>, <span class="code_number">-</span><span class="code_number">5000</span>, <span class="code_number">5000</span>], [<span class="code_variable">J</span>, <span class="code_number">-</span><span class="code_number">5000</span>, <span class="code_number">5000</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">parameters</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">1</span><span class="code_string">, </span><span class="code_string">b</span><span class="code_string">=</span><span class="code_string">1</span><span class="code_string">&quot;</span>], [<span class="code_variable">sliders</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">5</span><span class="code_string">:</span><span class="code_string">5</span><span class="code_string">, </span><span class="code_string">b</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">5</span><span class="code_string">:</span><span class="code_string">5</span><span class="code_string">&quot;</span>], [<span class="code_variable">trajectory_at</span>,<span class="code_number">0</span>.<span class="code_number">5</span>,<span class="code_number">0</span>.<span class="code_number">5</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Exercise</span><span class="code_comment"> </span><span class="code_comment">5</span><span class="code_comment">.</span><span class="code_comment">3</span><span class="code_comment">.</span><span class="code_comment">6</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">kill</span>(<span class="code_variable">a</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span> <span class="code_function">kill</span>(<span class="code_variable">b</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">R_</span><span class="code_operator">:</span> <span class="code_number">0</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">J_</span><span class="code_operator">:</span> <span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">R</span> <span class="code_operator">+</span> <span class="code_variable">b</span><span class="code_operator">*</span><span class="code_variable">J</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">R_</span>, <span class="code_variable">J_</span>], [<span class="code_variable">R</span>, <span class="code_variable">J</span>], [<span class="code_variable">R</span>, <span class="code_number">-</span><span class="code_number">5000</span>, <span class="code_number">5000</span>], [<span class="code_variable">J</span>, <span class="code_number">-</span><span class="code_number">5000</span>, <span class="code_number">5000</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">parameters</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">1</span><span class="code_string">, </span><span class="code_string">b</span><span class="code_string">=</span><span class="code_string">1</span><span class="code_string">&quot;</span>], [<span class="code_variable">sliders</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">5</span><span class="code_string">:</span><span class="code_string">5</span><span class="code_string">, </span><span class="code_string">b</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">5</span><span class="code_string">:</span><span class="code_string">5</span><span class="code_string">&quot;</span>], [<span class="code_variable">trajectory_at</span>,<span class="code_number">0</span>.<span class="code_number">5</span>,<span class="code_number">0</span>.<span class="code_number">5</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Example</span><span class="code_comment"> </span><span class="code_comment">6</span><span class="code_comment">.</span><span class="code_comment">1</span><span class="code_comment">.</span><span class="code_comment">1</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_variable">X_</span><span class="code_operator">:</span> <span class="code_variable">x</span> <span class="code_operator">+</span> <span class="code_variable">%e</span><span class="code_operator">*</span><span class="code_operator">*</span>(<span class="code_operator">-</span><span class="code_variable">y</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">Y_</span><span class="code_operator">:</span> <span class="code_operator">-</span><span class="code_variable">y</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale</span><span class="code_operator">:</span> <span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">X_</span>, <span class="code_variable">Y_</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_variable">x</span>, <span class="code_operator">-</span><span class="code_variable">scale</span>, <span class="code_variable">scale</span>], [<span class="code_variable">y</span>, <span class="code_operator">-</span><span class="code_variable">scale</span>, <span class="code_variable">scale</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">2</span>,<span class="code_number">0</span>], [<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">0</span>.<span class="code_number">5</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Example</span><span class="code_comment"> </span><span class="code_comment">6</span><span class="code_comment">.</span><span class="code_comment">3</span><span class="code_comment">.</span><span class="code_comment">1</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_variable">X_</span><span class="code_operator">:</span> <span class="code_operator">-</span><span class="code_variable">x</span> <span class="code_operator">+</span> <span class="code_variable">x</span><span class="code_operator">*</span><span class="code_operator">*</span><span class="code_number">3</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">Y_</span><span class="code_operator">:</span> <span class="code_number">-</span><span class="code_number">2</span><span class="code_operator">*</span><span class="code_variable">y</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale</span><span class="code_operator">:</span> <span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">X_</span>, <span class="code_variable">Y_</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_variable">x</span>, <span class="code_operator">-</span><span class="code_variable">scale</span>, <span class="code_variable">scale</span>], [<span class="code_variable">y</span>, <span class="code_operator">-</span><span class="code_variable">scale</span>, <span class="code_variable">scale</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">2</span>,<span class="code_number">0</span>], [<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">0</span>.<span class="code_number">5</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Rabbits</span><span class="code_comment"> </span><span class="code_comment">and</span><span class="code_comment"> </span><span class="code_comment">Sheeps</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_variable">X_</span><span class="code_operator">:</span> <span class="code_variable">x</span> <span class="code_operator">*</span> (<span class="code_number">3</span> <span class="code_operator">-</span> <span class="code_variable">x</span> <span class="code_operator">-</span> <span class="code_number">2</span><span class="code_operator">*</span><span class="code_variable">y</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">Y_</span><span class="code_operator">:</span> <span class="code_variable">y</span> <span class="code_operator">*</span> (<span class="code_number">2</span> <span class="code_operator">-</span> <span class="code_variable">x</span> <span class="code_operator">-</span> <span class="code_variable">y</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale0</span><span class="code_operator">:</span> <span class="code_number">0</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale1</span><span class="code_operator">:</span> <span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">X_</span>, <span class="code_variable">Y_</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_variable">x</span>, <span class="code_operator">-</span><span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], [<span class="code_variable">y</span>, <span class="code_operator">-</span><span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">2</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Example</span><span class="code_comment"> </span><span class="code_comment">6</span><span class="code_comment">.</span><span class="code_comment">5</span><span class="code_comment">.</span><span class="code_comment">1</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_variable">X_</span><span class="code_operator">:</span> <span class="code_variable">y</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">Y_</span><span class="code_operator">:</span> <span class="code_variable">x</span> <span class="code_operator">-</span> <span class="code_variable">x</span><span class="code_operator">*</span><span class="code_operator">*</span><span class="code_number">3</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale0</span><span class="code_operator">:</span> <span class="code_number">-</span><span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale1</span><span class="code_operator">:</span> <span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">X_</span>, <span class="code_variable">Y_</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_variable">x</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], [<span class="code_variable">y</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">2</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Pendulum</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_variable">%theta_</span><span class="code_operator">:</span> <span class="code_variable">v</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">V_</span><span class="code_operator">:</span> <span class="code_operator">-</span><span class="code_function">sin</span>(<span class="code_variable">%theta</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale0</span><span class="code_operator">:</span> <span class="code_number">-</span><span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale1</span><span class="code_operator">:</span> <span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">%theta_</span>, <span class="code_variable">V_</span>], [<span class="code_variable">%theta</span>, <span class="code_variable">v</span>], [<span class="code_variable">v</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], [<span class="code_variable">%theta</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">2</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Damped</span><span class="code_comment"> </span><span class="code_comment">Pendulum</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_variable">%theta_</span><span class="code_operator">:</span> <span class="code_variable">v</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">V_</span><span class="code_operator">:</span> <span class="code_number">-</span><span class="code_number">0</span>.<span class="code_number">1</span><span class="code_operator">*</span><span class="code_variable">v</span> <span class="code_operator">-</span><span class="code_function">sin</span>(<span class="code_variable">%theta</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale0</span><span class="code_operator">:</span> <span class="code_number">-</span><span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale1</span><span class="code_operator">:</span> <span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">%theta_</span>, <span class="code_variable">V_</span>], [<span class="code_variable">%theta</span>, <span class="code_variable">v</span>], [<span class="code_variable">v</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], [<span class="code_variable">%theta</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">2</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">load</span>(<span class="code_variable">physical_constants</span>)<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Exercise</span><span class="code_comment"> </span><span class="code_comment">6</span><span class="code_comment">.</span><span class="code_comment">3</span><span class="code_comment">.</span><span class="code_comment">8</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">kill</span>(<span class="code_variable">a</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">m1</span><span class="code_operator">:</span> <span class="code_number">10E10</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">m2</span><span class="code_operator">:</span> <span class="code_number">20E10</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">G</span><span class="code_operator">:</span> <span class="code_number">6</span>.<span class="code_number">673e</span><span class="code_operator">-</span><span class="code_number">11</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">X_</span><span class="code_operator">:</span> <span class="code_variable">y</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">Y_</span><span class="code_operator">:</span> <span class="code_variable">G</span> <span class="code_operator">*</span> <span class="code_variable">m2</span><span class="code_operator">/</span>(<span class="code_variable">x</span> <span class="code_operator">-</span> <span class="code_variable">a</span>) <span class="code_operator">*</span> <span class="code_variable">G</span> <span class="code_operator">*</span> <span class="code_variable">m1</span><span class="code_operator">/</span>(<span class="code_variable">x</span><span class="code_operator">*</span><span class="code_operator">*</span><span class="code_number">2</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale0</span><span class="code_operator">:</span> <span class="code_number">-</span><span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale1</span><span class="code_operator">:</span> <span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">X_</span>, <span class="code_variable">Y_</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_variable">x</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], [<span class="code_variable">y</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">parameters</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">3</span><span class="code_string">&quot;</span>], [<span class="code_variable">sliders</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">50</span><span class="code_string">:</span><span class="code_string">50</span><span class="code_string">&quot;</span>], [<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">2</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Example</span><span class="code_comment"> </span><span class="code_comment">7</span><span class="code_comment">.</span><span class="code_comment">1</span><span class="code_comment">.</span><span class="code_comment">1</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_variable">R_</span><span class="code_operator">:</span> <span class="code_variable">r</span> <span class="code_operator">*</span> (<span class="code_number">1</span> <span class="code_operator">-</span> <span class="code_variable">r</span><span class="code_operator">*</span><span class="code_operator">*</span><span class="code_number">2</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">%theta_</span><span class="code_operator">:</span> <span class="code_number">1</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale0</span><span class="code_operator">:</span> <span class="code_number">-</span><span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale1</span><span class="code_operator">:</span> <span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">R_</span>, <span class="code_variable">%theta_</span>], [<span class="code_variable">r</span>, <span class="code_variable">%theta</span>], [<span class="code_variable">r</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], [<span class="code_variable">%theta</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">2</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Van</span><span class="code_comment"> </span><span class="code_comment">Der</span><span class="code_comment"> </span><span class="code_comment">Pol</span><span class="code_comment"> </span><span class="code_comment">Oscillator</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">kill</span>(<span class="code_variable">MU</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">X_</span><span class="code_operator">:</span> <span class="code_variable">y</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">Y_</span><span class="code_operator">:</span> <span class="code_operator">-</span><span class="code_variable">MU</span><span class="code_operator">*</span>(<span class="code_variable">x</span><span class="code_operator">*</span><span class="code_operator">*</span><span class="code_number">2</span> <span class="code_operator">-</span> <span class="code_number">1</span>)<span class="code_operator">*</span><span class="code_variable">y</span> <span class="code_operator">-</span><span class="code_variable">x</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale0</span><span class="code_operator">:</span> <span class="code_number">-</span><span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale1</span><span class="code_operator">:</span> <span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">X_</span>, <span class="code_variable">Y_</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_variable">x</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], [<span class="code_variable">y</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">parameters</span>,<span class="code_string">&quot;</span><span class="code_string">MU</span><span class="code_string">=</span><span class="code_string">3</span><span class="code_string">&quot;</span>], [<span class="code_variable">sliders</span>,<span class="code_string">&quot;</span><span class="code_string">MU</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">10</span><span class="code_string">:</span><span class="code_string">10</span><span class="code_string">&quot;</span>], [<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">2</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Example</span><span class="code_comment"> </span><span class="code_comment">7</span><span class="code_comment">.</span><span class="code_comment">1</span><span class="code_comment">.</span><span class="code_comment">1</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_variable">R_</span><span class="code_operator">:</span> <span class="code_variable">r</span> <span class="code_operator">*</span> (<span class="code_number">1</span> <span class="code_operator">-</span> <span class="code_variable">r</span><span class="code_operator">*</span><span class="code_operator">*</span><span class="code_number">2</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">%theta_</span><span class="code_operator">:</span> <span class="code_number">1</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale0</span><span class="code_operator">:</span> <span class="code_number">-</span><span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale1</span><span class="code_operator">:</span> <span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">R_</span>, <span class="code_variable">%theta_</span>], [<span class="code_variable">r</span>, <span class="code_variable">%theta</span>], [<span class="code_variable">r</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], [<span class="code_variable">%theta</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">2</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Example</span><span class="code_comment"> </span><span class="code_comment">7</span><span class="code_comment">.</span><span class="code_comment">3</span><span class="code_comment">.</span><span class="code_comment">3</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">kill</span>(<span class="code_variable">a</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span> <span class="code_function">kill</span>(<span class="code_variable">b</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">X_</span><span class="code_operator">:</span> <span class="code_operator">-</span><span class="code_variable">x</span> <span class="code_operator">+</span> <span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">y</span> <span class="code_operator">+</span> <span class="code_variable">x</span><span class="code_operator">^</span>(<span class="code_number">2</span>)<span class="code_operator">*</span><span class="code_variable">y</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">Y_</span><span class="code_operator">:</span> <span class="code_variable">b</span> <span class="code_operator">-</span> <span class="code_variable">a</span><span class="code_operator">*</span><span class="code_variable">y</span> <span class="code_operator">-</span> <span class="code_variable">x</span><span class="code_operator">^</span>(<span class="code_number">2</span>)<span class="code_operator">*</span><span class="code_variable">y</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale0</span><span class="code_operator">:</span> <span class="code_number">-</span><span class="code_number">1</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale1</span><span class="code_operator">:</span> <span class="code_number">3</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">X_</span>, <span class="code_variable">Y_</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_variable">x</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], [<span class="code_variable">y</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">parameters</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">0</span><span class="code_string">.</span><span class="code_string">08</span><span class="code_string">,</span><span class="code_string">b</span><span class="code_string">=</span><span class="code_string">0</span><span class="code_string">.</span><span class="code_string">6</span><span class="code_string">&quot;</span>], [<span class="code_variable">sliders</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">0</span><span class="code_string">:</span><span class="code_string">10</span><span class="code_string">,</span><span class="code_string">b</span><span class="code_string">=</span><span class="code_string">0</span><span class="code_string">:</span><span class="code_string">10</span><span class="code_string">&quot;</span>], [<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">2</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Example</span><span class="code_comment"> </span><span class="code_comment">8</span><span class="code_comment">.</span><span class="code_comment">1</span><span class="code_comment">.</span><span class="code_comment">3</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">kill</span>(<span class="code_variable">MU</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">X_</span><span class="code_operator">:</span> <span class="code_variable">MU</span><span class="code_operator">*</span><span class="code_variable">x</span> <span class="code_operator">+</span> <span class="code_variable">y</span> <span class="code_operator">+</span> <span class="code_function">sin</span>(<span class="code_variable">x</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">Y_</span><span class="code_operator">:</span> <span class="code_variable">x</span> <span class="code_operator">-</span> <span class="code_variable">y</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale0</span><span class="code_operator">:</span> <span class="code_number">-</span><span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale1</span><span class="code_operator">:</span> <span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">X_</span>, <span class="code_variable">Y_</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_variable">x</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], [<span class="code_variable">y</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">parameters</span>,<span class="code_string">&quot;</span><span class="code_string">MU</span><span class="code_string">=</span><span class="code_string">3</span><span class="code_string">&quot;</span>], [<span class="code_variable">sliders</span>,<span class="code_string">&quot;</span><span class="code_string">MU</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">10</span><span class="code_string">:</span><span class="code_string">10</span><span class="code_string">&quot;</span>], [<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">2</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Example</span><span class="code_comment"> </span><span class="code_comment">8</span><span class="code_comment">.</span><span class="code_comment">2</span><span class="code_comment">.</span><span class="code_comment">1</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">kill</span>(<span class="code_variable">MU</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">X_</span><span class="code_operator">:</span> <span class="code_variable">MU</span><span class="code_operator">*</span><span class="code_variable">x</span> <span class="code_operator">-</span> <span class="code_variable">y</span> <span class="code_operator">+</span> <span class="code_operator">+</span> <span class="code_variable">x</span><span class="code_operator">*</span><span class="code_variable">y</span><span class="code_operator">^</span><span class="code_number">2</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">Y_</span><span class="code_operator">:</span> <span class="code_variable">x</span> <span class="code_operator">+</span> <span class="code_variable">MU</span><span class="code_operator">*</span><span class="code_variable">y</span> <span class="code_operator">+</span> <span class="code_variable">y</span><span class="code_operator">^</span><span class="code_number">3</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale0</span><span class="code_operator">:</span> <span class="code_number">-</span><span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale1</span><span class="code_operator">:</span> <span class="code_number">5</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">X_</span>, <span class="code_variable">Y_</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_variable">x</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], [<span class="code_variable">y</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">parameters</span>,<span class="code_string">&quot;</span><span class="code_string">MU</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">0</span><span class="code_string">.</span><span class="code_string">2</span><span class="code_string">&quot;</span>], [<span class="code_variable">sliders</span>,<span class="code_string">&quot;</span><span class="code_string">MU</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">0</span><span class="code_string">.</span><span class="code_string">5</span><span class="code_string">:</span><span class="code_string">0</span><span class="code_string">.</span><span class="code_string">5</span><span class="code_string">&quot;</span>], [<span class="code_variable">trajectory_at</span>,<span class="code_number">-</span><span class="code_number">2</span>,<span class="code_number">0</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Example</span><span class="code_comment"> </span><span class="code_comment">8</span><span class="code_comment">.</span><span class="code_comment">3</span><span class="code_comment">.</span><span class="code_comment">3</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">kill</span>(<span class="code_variable">a</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span> <span class="code_function">kill</span>(<span class="code_variable">b</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">X_</span><span class="code_operator">:</span> <span class="code_variable">a</span> <span class="code_operator">-</span> <span class="code_variable">x</span> <span class="code_operator">-</span> <span class="code_number">4</span><span class="code_operator">*</span><span class="code_variable">x</span><span class="code_operator">*</span><span class="code_variable">y</span><span class="code_operator">/</span>(<span class="code_number">1</span> <span class="code_operator">+</span> <span class="code_variable">x</span><span class="code_operator">*</span><span class="code_operator">*</span><span class="code_number">2</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">Y_</span><span class="code_operator">:</span> <span class="code_variable">b</span><span class="code_operator">*</span><span class="code_variable">x</span><span class="code_operator">*</span>(<span class="code_number">1</span> <span class="code_operator">-</span> <span class="code_variable">y</span><span class="code_operator">/</span>(<span class="code_number">1</span> <span class="code_operator">+</span> <span class="code_variable">x</span><span class="code_operator">*</span><span class="code_operator">*</span><span class="code_number">2</span>))<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale0</span><span class="code_operator">:</span> <span class="code_number">0</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale1</span><span class="code_operator">:</span> <span class="code_number">500</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">X_</span>, <span class="code_variable">Y_</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_variable">x</span>, <span class="code_variable">scale0</span>, <span class="code_number">20</span>], [<span class="code_variable">y</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], [<span class="code_variable">nsteps</span>, <span class="code_number">4000</span>], [<span class="code_variable">tstep</span>, <span class="code_number">0</span>.<span class="code_number">01</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">parameters</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">50</span><span class="code_string">,</span><span class="code_string">b</span><span class="code_string">=</span><span class="code_string">29</span><span class="code_string">.</span><span class="code_string">4</span><span class="code_string">&quot;</span>], [<span class="code_variable">sliders</span>,<span class="code_string">&quot;</span><span class="code_string">a</span><span class="code_string">=</span><span class="code_string">0</span><span class="code_string">:</span><span class="code_string">100</span><span class="code_string">,</span><span class="code_string">b</span><span class="code_string">=</span><span class="code_string">0</span><span class="code_string">:</span><span class="code_string">100</span><span class="code_string">&quot;</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Homoclinic</span><span class="code_comment"> </span><span class="code_comment">Bifurcation</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">kill</span>(<span class="code_variable">MU</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">X_</span><span class="code_operator">:</span> <span class="code_variable">y</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">Y_</span><span class="code_operator">:</span> <span class="code_variable">MU</span><span class="code_operator">*</span><span class="code_variable">y</span> <span class="code_operator">+</span> <span class="code_variable">x</span> <span class="code_operator">-</span> <span class="code_variable">x</span><span class="code_operator">*</span><span class="code_operator">*</span><span class="code_number">2</span> <span class="code_operator">+</span> <span class="code_variable">x</span><span class="code_operator">*</span><span class="code_variable">y</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale0</span><span class="code_operator">:</span> <span class="code_number">-</span><span class="code_number">2</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">scale1</span><span class="code_operator">:</span> <span class="code_number">2</span><span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_function">plotdf</span>([<span class="code_variable">X_</span>, <span class="code_variable">Y_</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_variable">x</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], [<span class="code_variable">y</span>, <span class="code_variable">scale0</span>, <span class="code_variable">scale1</span>], <BR>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<span class="code_variable">parameters</span>,<span class="code_string">&quot;</span><span class="code_string">MU</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">0</span><span class="code_string">.</span><span class="code_string">92</span><span class="code_string">&quot;</span>], [<span class="code_variable">sliders</span>,<span class="code_string">&quot;</span><span class="code_string">MU</span><span class="code_string">=</span><span class="code_string">-</span><span class="code_string">5</span><span class="code_string">:</span><span class="code_string">5</span><span class="code_string">&quot;</span>])<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Lorenz</span><span class="code_comment"> </span><span class="code_comment">equations</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">load</span>(<span class="code_variable">draw</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">latractor</span><span class="code_operator">:</span> [<span class="code_number">10</span><span class="code_operator">*</span>(<span class="code_variable">y</span><span class="code_operator">-</span><span class="code_variable">x</span>), <span class="code_operator">-</span><span class="code_variable">x</span><span class="code_operator">*</span><span class="code_variable">z</span><span class="code_operator">+</span><span class="code_number">100</span><span class="code_operator">*</span><span class="code_variable">x</span><span class="code_operator">-</span><span class="code_variable">y</span>, <span class="code_variable">x</span><span class="code_operator">*</span><span class="code_variable">y</span><span class="code_operator">-</span><span class="code_number">8</span><span class="code_operator">*</span><span class="code_variable">z</span><span class="code_operator">/</span><span class="code_number">3</span>]<span class="code_endofline">$</span><BR>
+<span class="code_variable">linitial</span><span class="code_operator">:</span> [<span class="code_number">-</span><span class="code_number">2</span>, <span class="code_number">8</span>, <span class="code_number">27</span>]<span class="code_endofline">$</span><BR>
+<span class="code_variable">lsolution</span><span class="code_operator">:</span><span class="code_function">rk</span>(<span class="code_variable">latractor</span>,[<span class="code_variable">x</span>,<span class="code_variable">y</span>,<span class="code_variable">z</span>],<span class="code_variable">linitial</span>,[<span class="code_variable">t</span>,<span class="code_number">0</span>,<span class="code_number">50</span>,<span class="code_number">0</span>.<span class="code_number">01</span>])<span class="code_endofline">$</span><BR>
+<span class="code_variable">lpoints</span><span class="code_operator">:</span> <span class="code_function">map</span>(<span class="code_function">lambda</span>([<span class="code_variable">x</span>], <span class="code_function">rest</span>(<span class="code_variable">x</span>)), <span class="code_variable">lsolution</span>)<span class="code_endofline">$</span><BR>
+<span class="code_function">wxdraw3d</span>(<span class="code_variable">point_type</span><span class="code_operator">=</span><span class="code_variable">none</span>,<span class="code_variable">points_joined</span><span class="code_operator">=</span>true,<span class="code_variable">color</span><span class="code_operator">=</span><span class="code_variable">orange</span>,<BR>
+<span class="code_variable">xlabel</span><span class="code_operator">=</span><span class="code_string">&quot;</span><span class="code_string">x</span><span class="code_string">(</span><span class="code_string">t</span><span class="code_string">)</span><span class="code_string">&quot;</span>,<span class="code_variable">ylabel</span><span class="code_operator">=</span><span class="code_string">&quot;</span><span class="code_string">y</span><span class="code_string">(</span><span class="code_string">t</span><span class="code_string">)</span><span class="code_string">&quot;</span>,<span class="code_variable">zlabel</span><span class="code_operator">=</span><span class="code_string">&quot;</span><span class="code_string">z</span><span class="code_string">(</span><span class="code_string">t</span><span class="code_string">)</span><span class="code_string">&quot;</span>,<BR>
+<span class="code_variable">xtics</span><span class="code_operator">=</span><span class="code_number">10</span>,<span class="code_variable">ytics</span><span class="code_operator">=</span><span class="code_number">10</span>,<span class="code_variable">ztics</span><span class="code_operator">=</span><span class="code_number">10</span>,<span class="code_function">points</span>(<span class="code_variable">lpoints</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}t42}\label{t42} \]
+  <img src="chaos_htmlimg/chaos_1.png" width="598" style="max-width:90%;" alt=" (Graphics) " ><BR/>
+
+\[\tag{\%{}o42}\label{o42} \]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Rossler</span><span class="code_comment"> </span><span class="code_comment">System</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">load</span>(<span class="code_variable">draw</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">latractor</span><span class="code_operator">:</span> [<span class="code_operator">-</span><span class="code_variable">y</span><span class="code_operator">-</span><span class="code_variable">z</span>, <span class="code_variable">x</span><span class="code_operator">+</span><span class="code_number">0</span>.<span class="code_number">2</span><span class="code_operator">*</span><span class="code_variable">z</span>, <span class="code_number">0</span>.<span class="code_number">2</span><span class="code_operator">+</span><span class="code_variable">z</span><span class="code_operator">*</span>(<span class="code_variable">x</span><span class="code_operator">-</span><span class="code_number">5</span>.<span class="code_number">7</span>)]<span class="code_endofline">$</span><BR>
+<span class="code_variable">linitial</span><span class="code_operator">:</span> [<span class="code_number">-</span><span class="code_number">7</span>, <span class="code_number">8</span>, <span class="code_number">6</span>]<span class="code_endofline">$</span><BR>
+<span class="code_variable">lsolution</span><span class="code_operator">:</span><span class="code_function">rk</span>(<span class="code_variable">latractor</span>,[<span class="code_variable">x</span>,<span class="code_variable">y</span>,<span class="code_variable">z</span>],<span class="code_variable">linitial</span>,[<span class="code_variable">t</span>,<span class="code_number">0</span>,<span class="code_number">500</span>,<span class="code_number">0</span>.<span class="code_number">01</span>])<span class="code_endofline">$</span><BR>
+<span class="code_variable">lpoints</span><span class="code_operator">:</span> <span class="code_function">map</span>(<span class="code_function">lambda</span>([<span class="code_variable">x</span>], <span class="code_function">rest</span>(<span class="code_variable">x</span>)), <span class="code_variable">lsolution</span>)<span class="code_endofline">$</span><BR>
+<span class="code_function">wxdraw3d</span>(<span class="code_variable">point_type</span><span class="code_operator">=</span><span class="code_variable">none</span>,<span class="code_variable">points_joined</span><span class="code_operator">=</span>true,<span class="code_variable">color</span><span class="code_operator">=</span><span class="code_variable">orange</span>,<BR>
+<span class="code_variable">xlabel</span><span class="code_operator">=</span><span class="code_string">&quot;</span><span class="code_string">x</span><span class="code_string">(</span><span class="code_string">t</span><span class="code_string">)</span><span class="code_string">&quot;</span>,<span class="code_variable">ylabel</span><span class="code_operator">=</span><span class="code_string">&quot;</span><span class="code_string">y</span><span class="code_string">(</span><span class="code_string">t</span><span class="code_string">)</span><span class="code_string">&quot;</span>,<span class="code_variable">zlabel</span><span class="code_operator">=</span><span class="code_string">&quot;</span><span class="code_string">z</span><span class="code_string">(</span><span class="code_string">t</span><span class="code_string">)</span><span class="code_string">&quot;</span>,<BR>
+<span class="code_variable">xtics</span><span class="code_operator">=</span><span class="code_number">10</span>,<span class="code_variable">ytics</span><span class="code_operator">=</span><span class="code_number">10</span>,<span class="code_variable">ztics</span><span class="code_operator">=</span><span class="code_number">10</span>,<span class="code_function">points</span>(<span class="code_variable">lpoints</span>))<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}t90}\label{t90} \]
+  <img src="chaos_htmlimg/chaos_4.png" width="598" style="max-width:90%;" alt=" (Graphics) " ><BR/>
+
+\[\tag{\%{}o90}\label{o90} \]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Example</span><span class="code_comment"> </span><span class="code_comment">12</span><span class="code_comment">.</span><span class="code_comment">5</span><span class="code_comment">.</span><span class="code_comment">1</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">kill</span>(<span class="code_variable">x</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span> <span class="code_function">kill</span>(<span class="code_variable">t</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">delta</span><span class="code_operator">:</span> <span class="code_number">0</span>.<span class="code_number">25</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">w</span><span class="code_operator">:</span> <span class="code_number">1</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">F</span><span class="code_operator">:</span> <span class="code_number">0</span>.<span class="code_number">18</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">dxdt</span><span class="code_operator">:</span> <span class="code_variable">y</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">dydt</span><span class="code_operator">:</span> <span class="code_variable">F</span><span class="code_operator">*</span><span class="code_function">cos</span>(<span class="code_variable">w</span><span class="code_operator">*</span><span class="code_variable">t</span>) <span class="code_operator">-</span> <span class="code_variable">delta</span><span class="code_operator">*</span><span class="code_variable">y</span> <span class="code_operator">+</span> <span class="code_variable">x</span> <span class="code_operator">-</span> <span class="code_variable">x</span><span class="code_operator">*</span><span class="code_operator">*</span><span class="code_number">3</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">points</span> <span class="code_operator">:</span> <span class="code_function">rk</span>([<span class="code_variable">dxdt</span>, <span class="code_variable">dydt</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_number">0</span>.<span class="code_number">2</span>, <span class="code_number">0</span>], [<span class="code_variable">t</span>, <span class="code_number">0</span>, <span class="code_number">200</span>, <span class="code_number">0</span>.<span class="code_number">01</span>] )<span class="code_endofline">$</span><BR>
+<span class="code_variable">txL</span> <span class="code_operator">:</span> <span class="code_function">makelist</span> ([<span class="code_variable">points</span>[<span class="code_variable">i</span>][<span class="code_number">1</span>], <span class="code_variable">points</span>[<span class="code_variable">i</span>][<span class="code_number">2</span>]], <span class="code_variable">i</span>, <span class="code_number">1</span>, <span class="code_function">length</span>(<span class="code_variable">points</span>))<span class="code_endofline">$</span><BR>
+<span class="code_variable">tyL</span> <span class="code_operator">:</span> <span class="code_function">makelist</span> ([<span class="code_variable">points</span>[<span class="code_variable">i</span>][<span class="code_number">1</span>], <span class="code_variable">points</span>[<span class="code_variable">i</span>][<span class="code_number">3</span>]], <span class="code_variable">i</span>, <span class="code_number">1</span>, <span class="code_function">length</span>(<span class="code_variable">points</span>))<span class="code_endofline">$</span><BR>
+<span class="code_function">wxplot2d</span>([ [<span class="code_variable">discrete</span>,<span class="code_variable">txL</span>], [<span class="code_variable">discrete</span>,<span class="code_variable">tyL</span>]],[<span class="code_variable">t</span>,<span class="code_number">0</span>,<span class="code_number">280</span>],<BR>
+ &nbsp;&nbsp;&nbsp;[<span class="code_variable">style</span>,[<span class="code_variable">lines</span>,<span class="code_number">3</span>]],[<span class="code_variable">xlabel</span>,<span class="code_string">&quot;</span><span class="code_string">t</span><span class="code_string">&quot;</span>],<BR>
+ &nbsp;&nbsp;&nbsp;[<span class="code_variable">legend</span>, <span class="code_string">&quot;</span><span class="code_string">x</span><span class="code_string">&quot;</span>, <span class="code_string">&quot;</span><span class="code_string">y</span><span class="code_string">&quot;</span>],<BR>
+ &nbsp;&nbsp;&nbsp;[<span class="code_variable">gnuplot_preamble</span>,<span class="code_string">&quot;</span><span class="code_string">set</span><span class="code_string"> </span><span class="code_string">key</span><span class="code_string"> </span><span class="code_string">bottom</span><span class="code_string"> </span><span class="code_string">left</span><span class="code_string">;</span><span class="code_string">&quot;</span>], [<span class="code_variable">gnuplot_term</span>, <span class="code_variable">aqua</span>])<span class="code_endofline">;</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}t85}\label{t85} \]
+  <img src="chaos_htmlimg/chaos_7.png" width="598" style="max-width:90%;" alt=" (Graphics) " ><BR/>
+
+\[\tag{\%{}o85}\label{o85} \]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+-->  
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Example</span><span class="code_comment"> </span><span class="code_comment">12</span><span class="code_comment">.</span><span class="code_comment">5</span><span class="code_comment">.</span><span class="code_comment">2</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_function">kill</span>(<span class="code_variable">x</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span> <span class="code_function">kill</span>(<span class="code_variable">t</span>)<span class="code_endofline">$</span><span class="code_endofline">;</span><BR>
+<span class="code_variable">delta</span><span class="code_operator">:</span> <span class="code_number">0</span>.<span class="code_number">25</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">stepSize</span><span class="code_operator">:</span> <span class="code_number">2</span><span class="code_operator">*</span><span class="code_function">float</span>(<span class="code_variable">%pi</span>)<span class="code_operator">/</span><span class="code_number">10</span>.<span class="code_number">0</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">w</span><span class="code_operator">:</span> <span class="code_number">1</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">F</span><span class="code_operator">:</span> <span class="code_number">0</span>.<span class="code_number">4</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">dxdt</span><span class="code_operator">:</span> <span class="code_variable">y</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">dydt</span><span class="code_operator">:</span> <span class="code_variable">F</span><span class="code_operator">*</span><span class="code_function">cos</span>(<span class="code_variable">w</span><span class="code_operator">*</span><span class="code_variable">t</span>) <span class="code_operator">-</span> <span class="code_variable">delta</span><span class="code_operator">*</span><span class="code_variable">y</span> <span class="code_operator">+</span> <span class="code_variable">x</span> <span class="code_operator">-</span> <span class="code_variable">x</span><span class="code_operator">*</span><span class="code_operator">*</span><span class="code_number">3</span><span class="code_endofline">$</span><BR>
+<span class="code_variable">rkRes</span> <span class="code_operator">:</span> <span class="code_function">rk</span>([<span class="code_variable">dxdt</span>, <span class="code_variable">dydt</span>], [<span class="code_variable">x</span>, <span class="code_variable">y</span>], [<span class="code_number">0</span>, <span class="code_number">0</span>], [<span class="code_variable">t</span>, <span class="code_number">0</span>, <span class="code_number">20000</span>, <span class="code_variable">stepSize</span>] )<span class="code_endofline">$</span><BR>
+<span class="code_variable">txL</span> <span class="code_operator">:</span> <span class="code_function">makelist</span> ([<span class="code_variable">rkRes</span>[<span class="code_variable">i</span>][<span class="code_number">1</span>], <span class="code_variable">rkRes</span>[<span class="code_variable">i</span>][<span class="code_number">2</span>]], <span class="code_variable">i</span>, <span class="code_number">1</span>, <span class="code_function">length</span>(<span class="code_variable">rkRes</span>))<span class="code_endofline">$</span><BR>
+<span class="code_variable">tyL</span> <span class="code_operator">:</span> <span class="code_function">makelist</span> ([<span class="code_variable">rkRes</span>[<span class="code_variable">i</span>][<span class="code_number">1</span>], <span class="code_variable">rkRes</span>[<span class="code_variable">i</span>][<span class="code_number">3</span>]], <span class="code_variable">i</span>, <span class="code_number">1</span>, <span class="code_function">length</span>(<span class="code_variable">rkRes</span>))<span class="code_endofline">$</span><BR>
+<span class="code_function">wxplot2d</span>([ [<span class="code_variable">discrete</span>,<span class="code_variable">txL</span>], [<span class="code_variable">discrete</span>,<span class="code_variable">tyL</span>]],[<span class="code_variable">t</span>,<span class="code_number">0</span>,<span class="code_number">280</span>],<BR>
+ &nbsp;&nbsp;&nbsp;[<span class="code_variable">style</span>,[<span class="code_variable">lines</span>,<span class="code_number">3</span>]],[<span class="code_variable">xlabel</span>,<span class="code_string">&quot;</span><span class="code_string">t</span><span class="code_string">&quot;</span>],<BR>
+ &nbsp;&nbsp;&nbsp;[<span class="code_variable">legend</span>, <span class="code_string">&quot;</span><span class="code_string">x</span><span class="code_string">&quot;</span>, <span class="code_string">&quot;</span><span class="code_string">y</span><span class="code_string">&quot;</span>],<BR>
+ &nbsp;&nbsp;&nbsp;[<span class="code_variable">gnuplot_preamble</span>,<span class="code_string">&quot;</span><span class="code_string">set</span><span class="code_string"> </span><span class="code_string">key</span><span class="code_string"> </span><span class="code_string">bottom</span><span class="code_string"> </span><span class="code_string">left</span><span class="code_string">;</span><span class="code_string">&quot;</span>], [<span class="code_variable">gnuplot_term</span>, <span class="code_variable">aqua</span>])<span class="code_endofline">;</span><BR>
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Phase</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_variable">xyL</span> <span class="code_operator">:</span> <span class="code_function">makelist</span> ([<span class="code_variable">rkRes</span>[<span class="code_variable">i</span>][<span class="code_number">2</span>], <span class="code_variable">rkRes</span>[<span class="code_variable">i</span>][<span class="code_number">3</span>]], <span class="code_variable">i</span>, <span class="code_number">1</span>, <span class="code_function">length</span>(<span class="code_variable">rkRes</span>))<span class="code_endofline">$</span><BR>
+<span class="code_function">wxplot2d</span> ( [<span class="code_variable">discrete</span>, <span class="code_variable">xyL</span>],[<span class="code_variable">x</span>, <span class="code_number">-</span><span class="code_number">1</span>.<span class="code_number">6</span>, <span class="code_number">1</span>.<span class="code_number">6</span>],[<span class="code_variable">y</span>, <span class="code_number">-</span><span class="code_number">1</span>.<span class="code_number">5</span>, <span class="code_number">1</span>.<span class="code_number">5</span>],<BR>
+ &nbsp;&nbsp;&nbsp;[<span class="code_variable">style</span>, [<span class="code_variable">lines</span>, <span class="code_number">3</span>]],<BR>
+ &nbsp;&nbsp;&nbsp;[<span class="code_variable">ylabel</span>, <span class="code_string">&quot;</span><span class="code_string"> </span><span class="code_string">&quot;</span>],[<span class="code_variable">xlabel</span>, <span class="code_string">&quot;</span><span class="code_string"> </span><span class="code_string">x</span><span class="code_string"> </span><span class="code_string">vs</span><span class="code_string"> </span><span class="code_string">y</span><span class="code_string"> </span><span class="code_string">&quot;</span>] )<span class="code_endofline">$</span><BR>
+<span class="code_comment">/*</span><span class="code_comment"> </span><span class="code_comment">Poincaré</span><span class="code_comment"> </span><span class="code_comment">*/</span><BR>
+<span class="code_variable">pL</span> <span class="code_operator">:</span> <span class="code_function">makelist</span> ([<span class="code_variable">rkRes</span>[<span class="code_variable">i</span>][<span class="code_number">2</span>], <span class="code_variable">rkRes</span>[<span class="code_variable">i</span>][<span class="code_number">3</span>]], <span class="code_variable">i</span>, <span class="code_number">1</span>, <span class="code_function">length</span>(<span class="code_variable">rkRes</span>), <span class="code_function">floor</span>(<span class="code_number">2</span><span class="code_operator">*</span><span class="code_function">float</span>(<span class="code_variable">%pi</span>)<span class="code_operator">/</span><span class="code_variable">stepSize</span>))<span class="code_endofline">$</span><BR>
+<span class="code_function">wxplot2d</span> ( [<span class="code_variable">discrete</span>, <span class="code_variable">pL</span>],[<span class="code_variable">x</span>, <span class="code_number">-</span><span class="code_number">1</span>.<span class="code_number">6</span>, <span class="code_number">1</span>.<span class="code_number">6</span>],[<span class="code_variable">y</span>, <span class="code_number">-</span><span class="code_number">1</span>.<span class="code_number">5</span>, <span class="code_number">1</span>.<span class="code_number">5</span>],<BR>
+ &nbsp;&nbsp;&nbsp;[<span class="code_variable">style</span>, [<span class="code_variable">points</span>, <span class="code_number">0</span>.<span class="code_number">5</span>]],<BR>
+ &nbsp;&nbsp;&nbsp;[<span class="code_variable">ylabel</span>, <span class="code_string">&quot;</span><span class="code_string"> </span><span class="code_string">&quot;</span>],[<span class="code_variable">xlabel</span>, <span class="code_string">&quot;</span><span class="code_string"> </span><span class="code_string">x</span><span class="code_string"> </span><span class="code_string">vs</span><span class="code_string"> </span><span class="code_string">y</span><span class="code_string"> </span><span class="code_string">&quot;</span>] )<span class="code_endofline">$</span><span class="code_operator"></span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{\%{}t731}\label{t731} \]
+  <img src="chaos_htmlimg/chaos_10.png" width="598" style="max-width:90%;" alt=" (Graphics) " ><BR/>
+
+\[\tag{\%{}o731}\label{o731} \]
+\[\tag{\%{}t733}\label{t733} \]
+  <img src="chaos_htmlimg/chaos_13.png" width="598" style="max-width:90%;" alt=" (Graphics) " ><BR/>
+
+\[\tag{\%{}t735}\label{t735} \]
+  <img src="chaos_htmlimg/chaos_15.png" width="598" style="max-width:90%;" alt=" (Graphics) " ><BR/>
+
+
+ <HR>
+ <SMALL> Created with <A HREF="http://wxmaxima.sourceforge.net/">wxMaxima</A>.</SMALL>
+ </BODY>
+</HTML>
